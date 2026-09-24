@@ -78,5 +78,5 @@ mongoose.connect(mongoDB_URI).then(()=>{
     console.log("Connected");
     
 }).catch((err)=>{
-    console.log(err);
+    console.log({message: "problem dey mehn!"});
 })
