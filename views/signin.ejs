@@ -4,25 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign In</title>
 </head>
 
 <body>
-    <form action="/dashboard" method="post">
-        <label for="First name">First Name</label>
-        <input type="text" name="firstName" placeholder="firstName">
+    <main>
+        <h1>Sign In</h1>
+        <form action="/dashboard" method="post">
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" autocomplete="email" required>
+            </div>
 
-        <label for="Last Name">Last Name</label>
-        <input type="text" name="lastName" placeholder="Last Name">
+            <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" autocomplete="current-password" required>
+            </div>
 
-        <label for="Email">Email</label>
-        <input type="email" name="email" placeholder="Email">
-
-        <label for="Password">Password</label>
-        <input type="password" name="password" placeholder="Password">
-
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="/sign-up">Sign up</a></p>
+    </main>
 </body>
 
 </html>

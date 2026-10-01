@@ -1,6 +1,7 @@
 const express =require("express");
 const app = express();
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const userModel = require("./model/user.model");
 
 require("dotenv").config();
 
@@ -54,14 +55,29 @@ app.get('/anything', (req, res) =>{
     res.send('Welcome to Backend class');
 });
 
-app.get('/signin', (req, res)=>{
-    res.render("signin");
+
+app.get('/sign-up', (req, res)=>{
+    res.render("sign-up");
 });
 
-app.post("/dashboard", (req, res)=>{
+app.post('/signin', async(req, res)=>{
     console.log(req.body);
-    res.render("dashboard", { firstName: req.body.firstName });
+    res.render('signin')
+    try {
+        const newUser = new userModel(req.body);
+
+        const savedUser = await newUser.save();
+        console.log(savedUser);
+        
+    } catch (err) {
+        console.log(err);
+    }
 })
+
+// app.post("/dashboard", (req, res)=>{
+//     console.log(req.body);
+//     res.render("dashboard", { firstName: req.body.firstName });
+// })
 
 app.get('/Welcome', (req, res)=>{
     res.sendFile(__dirname + "/Welcome.html"); 
